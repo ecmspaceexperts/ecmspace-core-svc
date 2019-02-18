@@ -12,13 +12,19 @@ import com.google.cloud.storage.Blob;
 public interface GCPUserService {
 
 	String createBlob(Map<String, Object> params);
+	
+	String createFolder(Map<String, Object> params);
 
 	String updateBlob(Map<String, Object> params);
 
 	boolean deleteBucket(String bucketName, String blobName);
 
-	List<StorageObject> listAllBlobs(String bucketName);
+	List<StorageObject> listAllBlobs(String bucketName, String folderPath);
+	
+	List<String> listAllFolders(String bucketName, String folderPath);
 
 	StorageObject getBlob(String bucketName, String blobName);
+	
+	StorageObject getFolder(String bucketName, String folderName);
 
 }

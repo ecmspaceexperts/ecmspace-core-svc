@@ -35,13 +35,29 @@ public class GCPUserServiceImpl implements GCPUserService{
 	}
 
 	@Override
-	public List<StorageObject> listAllBlobs(String bucketName) {
-		return gcpRepository.listAllBlobs(bucketName);
+	public List<StorageObject> listAllBlobs(String bucketName, String folderPath) {
+		return gcpRepository.listAllBlobs(bucketName,folderPath);
 	}
 
 	@Override
 	public StorageObject getBlob(String bucketName, String blobName) {
 		return gcpRepository.getBlob(bucketName, blobName);
 	}
+	
+	@Override
+	public String createFolder(Map<String, Object> params) {
+		return gcpRepository.createFolder(params);
+	}
+
+	@Override
+	public List<String> listAllFolders(String bucketName, String folderPath) {
+		return gcpRepository.listAllFolders(bucketName, folderPath); 
+	}
+
+	@Override
+	public StorageObject getFolder(String bucketName, String folderName) {
+		return gcpRepository.getFolder(bucketName, folderName);
+	}
+	
 
 }

@@ -18,6 +18,7 @@ public class Constants {
 	public static final String GCP_KEY_CONTENT_TYPE = "contenttype";
 	
 	public static final String GCP_KEY_BLOBNAME = "blobname";
+	public static final String GCP_KEY_FOLDERNAME = "foldername";
 	
 
 	
