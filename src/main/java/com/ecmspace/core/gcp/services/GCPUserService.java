@@ -16,6 +16,10 @@ public interface GCPUserService {
 	String createFolder(Map<String, Object> params);
 
 	String updateBlob(Map<String, Object> params);
+	
+	String promoteDocument(String taskId);
+	
+	String rejectDocument(String taskId);
 
 	boolean deleteBucket(String bucketName, String blobName);
 
@@ -26,5 +30,7 @@ public interface GCPUserService {
 	StorageObject getBlob(String bucketName, String blobName);
 	
 	StorageObject getFolder(String bucketName, String folderName);
+	
+	
 
 }

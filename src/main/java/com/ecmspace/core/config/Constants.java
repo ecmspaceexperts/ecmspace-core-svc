@@ -19,7 +19,20 @@ public class Constants {
 	
 	public static final String GCP_KEY_BLOBNAME = "blobname";
 	public static final String GCP_KEY_FOLDERNAME = "foldername";
+	public static final String GCP_KEY_STATE = "state";
 	
+	public static final String DOC_STATE_DRAFT = "Draft";
+	public static final String DOC_STATE_APPROVED = "Approved";
+	public static final String DOC_STATE_REJECTED = "Rejected";
+	
+	
+	// Flowable constants
+	
+	public static final String GCP_TARGET_DIR_KEY = "targetDirectory";
+	public static final String GCP_DOWNLOAD_MEDIA_LINK = "mediaLink";
+	public static final String FLOWABLE_TASK_ID = "taskId";
+	public static final String GCP_OBJECT_KEY = "object";
+	public static final String DOCUMENT_UPLOAD_PROCESS_NAME="starDocumentUploadFlow";
 
 	
 

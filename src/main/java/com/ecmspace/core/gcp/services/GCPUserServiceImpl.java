@@ -12,8 +12,8 @@ import com.google.api.gax.paging.Page;
 import com.google.api.services.storage.model.StorageObject;
 import com.google.cloud.storage.Blob;
 
-@Service
-@Qualifier("gcpUserService")
+@Service("gcpUserService")
+//@Qualifier("gcpUserService")
 public class GCPUserServiceImpl implements GCPUserService{
 	
 	@Autowired
@@ -57,6 +57,16 @@ public class GCPUserServiceImpl implements GCPUserService{
 	@Override
 	public StorageObject getFolder(String bucketName, String folderName) {
 		return gcpRepository.getFolder(bucketName, folderName);
+	}
+
+	@Override
+	public String promoteDocument(String taskId) {
+		return gcpRepository.promoteDocument(taskId);
+	}
+
+	@Override
+	public String rejectDocument(String taskId) {
+		return gcpRepository.rejectDocument(taskId);
 	}
 	
 

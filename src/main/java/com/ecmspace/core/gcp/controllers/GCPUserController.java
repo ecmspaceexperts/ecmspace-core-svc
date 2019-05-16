@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ecmspace.core.config.Constants;
+import com.ecmspace.core.flowable.FlowableService;
+import com.ecmspace.core.flowable.TaskObject;
 import com.ecmspace.core.gcp.services.GCPUserService;
 import com.ecmspace.core.gcp.validators.GCPRequestValidator;
 import com.google.api.services.storage.model.StorageObject;
@@ -27,6 +29,9 @@ public class GCPUserController {
 
 	@Autowired
 	private GCPUserService gcpUserService;
+	
+	@Autowired
+	private FlowableService flowableService;
 
 	@Autowired
 	private GCPRequestValidator gcpRequestValidator;
@@ -103,5 +108,29 @@ public class GCPUserController {
 	public StorageObject getFolder(@RequestParam("bucketName") String bucketName, @RequestParam("folderName") String folderName) {
 		return gcpUserService.getFolder(bucketName, folderName);
 	}
+	
+	@GetMapping("/approve-document")
+	public boolean approveDocument(@RequestParam("taskId") String taskId) {
+		flowableService.approve(taskId);
+		return true;
+	}
+	
+	@GetMapping("/reject-document")
+	public boolean rejectDocument(@RequestParam("taskId") String taskId) {
+		flowableService.reject(taskId);
+		return false;
+	}
+	
+	@GetMapping("/claim-task")
+	public boolean claimTask(@RequestParam("taskId") String taskId) {
+		flowableService.claimTask(taskId);
+		return true;
+	}
+	
+	@GetMapping("/all-tasks")
+	public List<TaskObject> claimTask() {
+		return flowableService.getPendingTasks();
+	}
+	
 
 }
