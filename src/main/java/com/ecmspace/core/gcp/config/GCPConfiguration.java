@@ -24,7 +24,7 @@ import com.google.cloud.storage.StorageOptions;
 @ComponentScan("com.ecmspace")
 public class GCPConfiguration {
 
-	@NoLogging
+	//@NoLogging
 	@Bean
 	public Storage storageInstace(){
 		
