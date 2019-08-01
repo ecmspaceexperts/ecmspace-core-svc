@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import com.ecmspace.core.aop.NoLogging;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
@@ -18,10 +19,12 @@ import com.google.api.services.storage.StorageScopes;
 
 import com.google.cloud.storage.StorageOptions;
 
+
 @Configuration
 @ComponentScan("com.ecmspace")
 public class GCPConfiguration {
 
+	@NoLogging
 	@Bean
 	public Storage storageInstace(){
 		

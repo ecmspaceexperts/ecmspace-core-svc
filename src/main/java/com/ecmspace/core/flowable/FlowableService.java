@@ -102,19 +102,23 @@ public class FlowableService {
 		this.taskService.claim(taskId, "jlong");
 	}
 
-	public void approve(String taskId){
+	public void approve(String taskId, String comment){
 		try{
 			this.taskService.setVariable(taskId, "canPromote", true);
 			//this.taskService.setVariable(taskId, Constants.FLOWABLE_TASK_ID, taskId);
+			Task t =  this.taskService.createTaskQuery().taskId(taskId).singleResult();
+			this.taskService.addComment(taskId, t.getProcessInstanceId(), comment);
 			this.taskService.complete(taskId);
 		}catch(FlowableException e){
 			e.printStackTrace();
 		}
 	}
 
-	public void reject(String taskId){
+	public void reject(String taskId, String comment){
 		try{
 			this.taskService.setVariable(taskId, "canPromote", false);
+			Task t =  this.taskService.createTaskQuery().taskId(taskId).singleResult();
+			this.taskService.addComment(taskId, t.getProcessInstanceId(), comment);
 			this.taskService.complete(taskId);
 		}catch(FlowableException e){
 			e.printStackTrace();

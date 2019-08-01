@@ -16,13 +16,17 @@ public class AOPLogger {
     private final Log log = LogFactory.getLog(getClass());
 
 
-    @AfterReturning("execution(* com.ecmspace.core..*.*(..))")
+    @AfterReturning("execution(* com.ecmspace.core..*.*(..))"
+    		+ " && !@annotation(com.ecmspace.core.aop.NoLogging)"
+    		+ " && !@target(com.ecmspace.core.aop.NoLogging)")
     public void logMethodAccessAfter(JoinPoint joinPoint) {
        log.info("***** Completed: " + joinPoint.getSignature().getName() + " *****");
        // System.out.println("***** Completed: " + joinPoint.getSignature().getDeclaringTypeName()+" : "+ joinPoint.getSignature().getName() + " *****");
     }
 
-    @Before("execution(* com.ecmspace.core..*.*(..))")
+    @Before("execution(* com.ecmspace.core..*.*(..))"
+    		+ " && !@annotation(com.ecmspace.core.aop.NoLogging)"
+    		+ " && !@target(com.ecmspace.core.aop.NoLogging)")
     public void logMethodAccessBefore(JoinPoint joinPoint) {
         log.info("***** Starting: " + joinPoint.getSignature().getName() + " *****");
        // System.out.println("***** Starting: " + joinPoint.getSignature().getDeclaringTypeName()+" : "+ joinPoint.getSignature().getName() + " *****");

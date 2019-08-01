@@ -110,14 +110,14 @@ public class GCPUserController {
 	}
 	
 	@GetMapping("/approve-document")
-	public boolean approveDocument(@RequestParam("taskId") String taskId) {
-		flowableService.approve(taskId);
+	public boolean approveDocument(@RequestParam("taskId") String taskId, @RequestParam("comment") String comment) {
+		flowableService.approve(taskId,comment);
 		return true;
 	}
 	
 	@GetMapping("/reject-document")
-	public boolean rejectDocument(@RequestParam("taskId") String taskId) {
-		flowableService.reject(taskId);
+	public boolean rejectDocument(@RequestParam("taskId") String taskId, @RequestParam("comment") String comment) {
+		flowableService.reject(taskId,comment);
 		return false;
 	}
 	

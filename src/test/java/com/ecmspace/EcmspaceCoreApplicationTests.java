@@ -65,7 +65,7 @@ public class EcmspaceCoreApplicationTests {
 		//String tIdProcess = (String) this.taskService.createTaskQuery().taskId(tId).singleResult().getProcessVariables().get(Constants.FLOWABLE_TASK_ID);
 		//log.info("tIdProcess: "+tIdProcess);
 		
-		flowableService.approve(tId);
+		flowableService.approve(tId,"Approved by approver.");
 		log.info("approved");
 	}
 	
